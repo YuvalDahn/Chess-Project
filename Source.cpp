@@ -49,7 +49,7 @@ void main()
 		// according the protocol. Ex: e2e4           (move e2 to e4)
 		
 		// YOUR CODE
-		strcpy_s(msgToGraphics, "0c"); // msgToGraphics should contain the result of the operation
+		strcpy_s(msgToGraphics, "0"); // msgToGraphics should contain the result of the operation
 
 
 
