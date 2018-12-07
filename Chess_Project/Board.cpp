@@ -45,8 +45,14 @@ MoveResult Board::move(Location src, Location dst)
 		return result;
 	}
 
+	Piece* temp = (*this)[dst];
+	(*this)[dst] = (*this)[src];
+	(*this)[src] = nullptr;
+
 	if (is_check(src, dst, src_side))
 	{
+		(*this)[src] = (*this)[dst];
+		(*this)[dst] = temp;
 		return SELF_CHESS_MOVE;
 	}
 	else if (is_check(src, dst, dst_side))
@@ -57,17 +63,14 @@ MoveResult Board::move(Location src, Location dst)
 	return GOOD_MOVE;
 }
 
-bool Board::is_check(Location src, Location dst, Side _side)
+bool Board::is_check(Location src, Location dst, Side side)
 {
-	Piece* temp = (*this)[dst];
-	(*this)[dst] = (*this)[src];
-	(*this)[src] = nullptr;
-	Location king = getKing(_side);
+	Location king = getKing(side);
 	for (int i = 0; i < 8; ++i)
 	{
 		for (int j = 0; j < 8; ++j)
 		{
-			if (_side != this->_board_arr[i][j]->get_color())
+			if (side != this->_board_arr[i][j]->get_color())
 			{
 				try
 				{
