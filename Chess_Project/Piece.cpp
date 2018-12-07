@@ -20,9 +20,10 @@ bool Piece::moveStraight(Location src, Location dst, Piece* board_arr[][8])
 {
 	if(src.get_col() == dst.get_col() || src.get_row() == dst.get_row())	//check if src and dst are in straight line
 	{
-		for(size_t i = src.get_row(); i < dst.get_row(); i++)				//check if there's something in the way
+		int i = 0, j = 0;
+		for(i = src.get_row(); i < dst.get_row(); i++)				//check if there's something in the way
 		{
-			for(size_t j = src.get_col(); j < dst.get_col(); j++)
+			for(j = src.get_col(); j < dst.get_col(); j++)
 			{
 				if(board_arr[i][j] != nullptr)								//if there is something on the way, it is not a valid move
 				{
@@ -39,7 +40,7 @@ bool Piece::moveDiagonal(Location src, Location dst, Piece* board_arr[][8])
 {
 	int verctical_diff = dst.get_row() - src.get_row();					//row desired move
 	int horizontal_diff = dst.get_col() - src.get_col();				//col desired move
-	if(abs(horizontal_diff) == abs(verctical_diff));					//check if src and dst are in diagonal line
+	if(abs(horizontal_diff) == abs(verctical_diff))						//check if src and dst are in diagonal line
 	{
 		(horizontal_diff > 0) ? horizontal_diff-- : horizontal_diff++;	//increases/decreases according to positivity
 		(verctical_diff > 0) ? verctical_diff-- : verctical_diff++;

@@ -4,7 +4,6 @@ Emails:		harelka2@gmail.com,	yuvaldahn@gmail.com
 */
 #pragma once
 #include <iostream>
-#include "Piece.h"
 #include "Board.h"
 
 using std::string;
