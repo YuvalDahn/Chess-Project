@@ -35,8 +35,7 @@ bool Piece::moveDiagonal(Location src, Location dst, Piece* board_arr[][8])
 {
 	int verctical_diff = dst.get_row() - src.get_row();					//row desired move
 	int horizontal_diff = dst.get_col() - src.get_col();				//col desired move
-	if(horizontal_diff == verctical_diff ||								//check if src and dst are in diagonal line
-		-1 * (horizontal_diff) == verctical_diff);
+	if(abs(horizontal_diff) == abs(verctical_diff));					//check if src and dst are in diagonal line
 	{
 		(horizontal_diff > 0) ? horizontal_diff-- : horizontal_diff++;	//increases/decreases according to positivity
 		(verctical_diff > 0) ? verctical_diff-- : verctical_diff++;

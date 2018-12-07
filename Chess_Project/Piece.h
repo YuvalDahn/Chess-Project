@@ -4,6 +4,7 @@ Authors:    Harel Katz,			Yuval Dahan
 Emails:		harelka2@gmail.com,	yuvaldahn@gmail.com
 */
 
+#include <cmath>
 #include "Location.h"
 
 enum Side : bool

@@ -6,8 +6,7 @@ Emails:		harelka2@gmail.com,	yuvaldahn@gmail.com
 
 #include "Piece.h"
 
-class Queen :
-	public Piece
+class Queen : public Piece
 {
 public:
 	Queen(Side color);
