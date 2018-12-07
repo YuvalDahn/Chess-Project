@@ -21,7 +21,7 @@ bool Pawn::is_valid_move(Location src, Location dst, Piece * board_arr[][8])
 		}
 		return verctical_diff == 1;
 	}
-	return abs(horizontal_diff) == 1 && verctical_diff == 1;
+	return abs(horizontal_diff) == 1 && abs(verctical_diff) == 1;
 }
 	
 
