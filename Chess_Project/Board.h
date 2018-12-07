@@ -18,14 +18,14 @@ using std::string;
 
 enum MoveResult
 {
-	GOOD_MOV,
+	GOOD_MOVE,
 	CHESS_MOVE,
 	NO_PLAYER_TOOL_IN_SRC,
-	PLAYER_TOOL_IN_TRGT,
+	PLAYER_TOOL_IN_DST,
 	SELF_CHESS_MOVE,
 	ILLEGAL_INDEX,
 	ILLEGAL_TOOL_MOVE,
-	SRC_AND_TRGT_SAME,
+	SRC_AND_DST_SAME,
 	MATE_MOVE
 };
 
@@ -40,8 +40,8 @@ protected:
 public:
 
 	Board(string );
-	void move(Location src, Location dst);
-	bool is_check(bool _side);
+	MoveResult move(Location src, Location dst);
+	bool is_check(Location src, Location dst, Side _side);
 	Piece* get_piece(char p);
 	Piece* operator[](string loc);
 	Piece* operator[](Location loc);

@@ -17,19 +17,67 @@ Board::Board(string init_board)
 	this->_turn = (init_board[pos]) ? BLACK : WHITE;
 }
 
-void Board::move(Location src, Location dst)
+MoveResult Board::move(Location src, Location dst)
 {
-	Piece* piece = _board_arr[src.get_row()][src.get_col()];
-	if (piece == nullptr)
+	Piece* p_src = this->_board_arr[src.get_row()][src.get_col()];
+	Piece* p_dst = this->_board_arr[dst.get_row()][dst.get_col()];
+	Side src_side = p_src->get_color();
+	Side dst_side = p_dst->get_color();
+	if (p_src == nullptr)
 	{
-		throw NO_PLAYER_TOOL_IN_SRC;
+		return NO_PLAYER_TOOL_IN_SRC;
 	}
-	piece->is_valid_move(src, dst, this->_board_arr);
-	//the movment delet src,
+	else if (dst_side == src_side)
+	{
+		return PLAYER_TOOL_IN_DST;
+	}
+	else if (p_src == p_dst)
+	{
+		return SRC_AND_DST_SAME;
+	}
+
+	try
+	{
+		p_src->is_valid_move(src, dst, this->_board_arr);
+	}
+	catch (MoveResult result)
+	{
+		return result;
+	}
+
+	if (is_check(src, dst, src_side))
+	{
+		return SELF_CHESS_MOVE;
+	}
+	else if (is_check(src, dst, dst_side))
+	{
+		return CHESS_MOVE;
+	}
+
+	return GOOD_MOVE;
 }
 
-bool Board::is_check(bool _side)
+bool Board::is_check(Location src, Location dst, Side _side)
 {
+	Piece* temp = this->_board_arr[dst.get_row()][dst.get_col()];
+	this->_board_arr[dst.get_row()][dst.get_col()] = this->_board_arr[src.get_row()][src.get_col()];
+	_board_arr[src.get_row()][src.get_col()] = nullptr;
+	Location king = getKing(_side);
+	for (int i = 0; i < 8; ++i)
+	{
+		for (int j = 0; j < 8; ++j)
+		{
+			if (_side != this->_board_arr[i][j]->get_color())
+			{
+				try
+				{
+					this->_board_arr[i][j]->is_valid_move(Location(i, j), king, this->_board_arr);
+					return true;
+				}
+				catch (...) {}
+			}
+		}
+	}
 	return false;
 }
 

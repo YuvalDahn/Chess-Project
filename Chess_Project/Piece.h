@@ -8,8 +8,8 @@ Emails:		harelka2@gmail.com,	yuvaldahn@gmail.com
 
 enum Side
 {
-	WHITE,
-	BLACK
+	BLACK,
+	WHITE
 };
 
 class Piece
