@@ -16,7 +16,7 @@ Emails:		harelka2@gmail.com, yuvaldahn@gmail.com
 
 using std::string;
 
-enum MyEnum
+enum MoveResult
 {
 	GOOD_MOV,
 	CHESS_MOVE,

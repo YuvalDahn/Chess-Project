@@ -24,7 +24,7 @@ void Board::move(Location src, Location dst)
 	{
 		throw NO_PLAYER_TOOL_IN_SRC;
 	}
-	piece->is_valid_move(src, dst);
+	piece->is_valid_move(src, dst, this->_board_arr);
 	//the movment delet src,
 }
 
