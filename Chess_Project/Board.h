@@ -3,6 +3,7 @@ Authors:	Harel Katz,			Yuval Dahan
 Emails:		harelka2@gmail.com, yuvaldahn@gmail.com  
 */
 #pragma once
+#include <stdio.h>
 #include <iostream>
 #include <string>
 #include "Piece.h"
@@ -15,6 +16,7 @@ Emails:		harelka2@gmail.com, yuvaldahn@gmail.com
 #include "Pawn.h"
 
 using std::string;
+using std::int;
 
 enum MoveResult
 {

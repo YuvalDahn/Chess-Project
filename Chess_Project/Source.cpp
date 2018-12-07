@@ -6,8 +6,11 @@ Emails:		harelka2@gmail.com,	yuvaldahn@gmail.com
 #include <iostream>
 #include <thread>
 
-using namespace std;
-void main()
+using std::cout;
+using std::endl;
+using std::cin;
+
+int main()
 {
 	srand(time_t(NULL));
 
