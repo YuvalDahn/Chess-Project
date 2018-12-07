@@ -6,8 +6,7 @@ Emails:		harelka2@gmail.com,	yuvaldahn@gmail.com
 
 #include "Piece.h"
 
-class Bishop :
-	public Piece
+class Bishop : public Piece
 {
 public:
 	Bishop(Side color);
