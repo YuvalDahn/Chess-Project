@@ -5,9 +5,11 @@
 
 #pragma once
 #include "targetver.h"
-#include <stdio.h>
-#include <tchar.h>
+#include <iostream>
+#include <cmath>
+#include <string>
 
+using std::string;
 
 
 // TODO: reference additional headers your program requires here
