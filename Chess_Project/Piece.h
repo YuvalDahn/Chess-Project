@@ -3,6 +3,7 @@ Authors:    Harel Katz,			Yuval Dahan
 Emails:		harelka2@gmail.com,	yuvaldahn@gmail.com
 */
 #pragma once
+#include <iostream>
 #include <cmath>
 #include "Location.h"
 
