@@ -6,21 +6,22 @@ Emails:		harelka2@gmail.com,	yuvaldahn@gmail.com
 
 #include "Location.h"
 
-enum Side
+enum Side : bool
 {
-	BLACK,
-	WHITE
+	WHITE = true,
+	BLACK = false
 };
 
 class Piece
 {
-private:
+protected:
 	Side _color;
+
+	static bool moveStraight(Location src, Location dst, Piece* board_arr[][8]);
+	static bool moveDiagonal(Location src, Location dst, Piece* board_arr[][8]);
 public:
-	//Piece(Side color) = 0;
+	Piece(Side color);
 	virtual ~Piece();
-	virtual bool is_valid_move(Location src, Location dst, Piece*(*)[8]) = 0;
+	virtual bool is_valid_move(Location src, Location dst, Piece* board_arr[][8]) = 0;
 	virtual Side get_color();
-	static bool moveStraight(Location src, Location dst);
-	static bool moveDiagonal(Location src, Location dst);
 };
