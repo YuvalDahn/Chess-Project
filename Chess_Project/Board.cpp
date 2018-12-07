@@ -92,22 +92,22 @@ Piece * Board::get_piece(char p)
 	switch (p)
 	{
 	case 'K':
-		return King(side);
+		return new King(side);
 		break;
 	case 'Q':
-		return Queen(side);
+		return new Queen(side);
 		break;
 	case 'R':
-		return Rook(side);
+		return new Rook(side);
 		break;
 	case 'N':
-		return Knight(side);
+		return new Knight(side);
 		break;
 	case 'B':
-		return Bishop(side);
+		return new Bishop(side);
 		break;
 	case 'P':
-		return Pawn(side);
+		return new Pawn(side);
 		break;
 	case '#':
 		return nullptr;
