@@ -128,3 +128,8 @@ const Piece *& Board::operator[](Location loc) const
 	return (const Piece *&) this->_board_arr[loc.get_row()][loc.get_col()];
 }
 
+Location Board::get_king(Side side)
+{
+	return Location(0, 0);
+}
+
