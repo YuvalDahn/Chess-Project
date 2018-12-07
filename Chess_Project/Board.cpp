@@ -65,7 +65,7 @@ MoveResult Board::move(Location src, Location dst)
 
 bool Board::is_check(Location src, Location dst, Side side)
 {
-	Location king = getKing(side);
+	Location king = this->get_king(side);
 	for (int i = 0; i < 8; ++i)
 	{
 		for (int j = 0; j < 8; ++j)
@@ -115,6 +115,7 @@ Piece * Board::get_piece(char p)
 	case '#':
 		return nullptr;
 	}
+	return nullptr;
 }
 
 Piece *& Board::operator[](Location loc)
