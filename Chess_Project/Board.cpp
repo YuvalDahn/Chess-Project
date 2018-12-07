@@ -36,13 +36,9 @@ MoveResult Board::move(Location src, Location dst)
 		return SRC_AND_DST_SAME;
 	}
 
-	try
+	if (!p_src->is_valid_move(src, dst, this->_board_arr))
 	{
-		p_src->is_valid_move(src, dst, this->_board_arr);
-	}
-	catch (MoveResult result)
-	{
-		return result;
+		return ILLEGAL_TOOL_MOVE;
 	}
 
 	Piece* temp = (*this)[dst];
