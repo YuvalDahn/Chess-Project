@@ -29,5 +29,5 @@ public:
 	Piece* get_piece(char p);
 	Piece*& operator[](Location loc);
 	const Piece*& operator[](Location loc) const;
-	Location get_king(Side side);	//TODO
+	Location get_king(Side side);
 };

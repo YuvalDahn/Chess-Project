@@ -30,6 +30,5 @@ public:
 	void set_row(char row);
 	void set_col(int col);
 	void set_col(char col);
-	//TODO: operator=
 
 };

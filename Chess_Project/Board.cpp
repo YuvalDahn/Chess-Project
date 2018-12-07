@@ -130,6 +130,15 @@ const Piece *& Board::operator[](Location loc) const
 
 Location Board::get_king(Side side)
 {
-	return Location(0, 0);
+	for (int i = 0; i < 8; ++i)
+	{
+		for (int j = 0; j < 8; ++j)
+		{
+			if (side == this->_board_arr[i][j]->get_color() && this->_board_arr[i][j]->get_type() == 'k')
+			{
+				return Location(i, j);
+			}
+		}
+	}
 }
 

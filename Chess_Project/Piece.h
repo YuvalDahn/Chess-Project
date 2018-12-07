@@ -18,4 +18,5 @@ public:
 	virtual ~Piece();
 	virtual bool is_valid_move(Location src, Location dst, Piece* board_arr[][8]) = 0;
 	virtual Side get_color();
+	virtual char get_type() = 0;
 };
