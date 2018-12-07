@@ -43,7 +43,7 @@ public:
 	MoveResult move(Location src, Location dst);
 	bool is_check(Location src, Location dst, Side _side);
 	Piece* get_piece(char p);
-	Piece* operator[](string loc);
-	Piece* operator[](Location loc);
+	Piece*& operator[](Location loc);
+	const Piece*& operator[](Location loc) const;
 
 };

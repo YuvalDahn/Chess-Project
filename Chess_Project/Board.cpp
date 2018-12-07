@@ -59,9 +59,9 @@ MoveResult Board::move(Location src, Location dst)
 
 bool Board::is_check(Location src, Location dst, Side _side)
 {
-	Piece* temp = this->_board_arr[dst.get_row()][dst.get_col()];
-	this->_board_arr[dst.get_row()][dst.get_col()] = this->_board_arr[src.get_row()][src.get_col()];
-	_board_arr[src.get_row()][src.get_col()] = nullptr;
+	Piece* temp = (*this)[dst];
+	(*this)[dst] = (*this)[src];
+	(*this)[src] = nullptr;
 	Location king = getKing(_side);
 	for (int i = 0; i < 8; ++i)
 	{
@@ -113,3 +113,14 @@ Piece * Board::get_piece(char p)
 		return nullptr;
 	}
 }
+
+Piece *& Board::operator[](Location loc)
+{
+	return this->_board_arr[loc.get_row()][loc.get_col()];
+}
+
+const Piece *& Board::operator[](Location loc) const
+{
+	return (const Piece *&) this->_board_arr[loc.get_row()][loc.get_col()];
+}
+
