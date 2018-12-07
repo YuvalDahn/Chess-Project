@@ -30,7 +30,7 @@ int Location::get_col()
 
 void Location::set_row(int row)
 {
-	this->set_row(row + this->MIN_ROW);
+	this->set_row((char)row + this->MIN_ROW);
 }
 
 void Location::set_row(char row)
@@ -47,7 +47,7 @@ void Location::set_row(char row)
 
 void Location::set_col(int col)
 {
-	this->set_row(col + this->MIN_COL);
+	this->set_row((char)col + this->MIN_COL);
 }
 
 void Location::set_col(char col)

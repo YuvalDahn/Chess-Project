@@ -34,7 +34,7 @@ int main()
 		else 
 		{
 			p.close();
-			return;
+			return 0;
 		}
 	}
 	

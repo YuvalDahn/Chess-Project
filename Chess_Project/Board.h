@@ -3,9 +3,7 @@ Authors:	Harel Katz,			Yuval Dahan
 Emails:		harelka2@gmail.com, yuvaldahn@gmail.com  
 */
 #pragma once
-#include <stdio.h>
-#include <iostream>
-#include <string>
+#include "stdafx.h"
 #include "Piece.h"
 #include "Location.h"
 #include "King.h"
@@ -14,22 +12,6 @@ Emails:		harelka2@gmail.com, yuvaldahn@gmail.com
 #include "Knight.h"
 #include "Bishop.h"
 #include "Pawn.h"
-
-using std::string;
-using std::int;
-
-enum MoveResult
-{
-	GOOD_MOVE,
-	CHESS_MOVE,
-	NO_PLAYER_TOOL_IN_SRC,
-	PLAYER_TOOL_IN_DST,
-	SELF_CHESS_MOVE,
-	ILLEGAL_INDEX,
-	ILLEGAL_TOOL_MOVE,
-	SRC_AND_DST_SAME,
-	MATE_MOVE
-};
 
 class Board
 {

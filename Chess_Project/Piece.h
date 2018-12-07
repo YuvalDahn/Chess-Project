@@ -3,15 +3,8 @@ Authors:    Harel Katz,			Yuval Dahan
 Emails:		harelka2@gmail.com,	yuvaldahn@gmail.com
 */
 #pragma once
-#include <iostream>
-#include <cmath>
+#include "stdafx.h"
 #include "Location.h"
-
-enum Side : bool
-{
-	WHITE = true,
-	BLACK = false
-};
 
 class Piece
 {

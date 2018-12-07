@@ -3,8 +3,7 @@ Authors:    Harel Katz,			Yuval Dahan
 Emails:		harelka2@gmail.com,	yuvaldahn@gmail.com
 */
 #pragma once
-#include <iostream>
-#include "Board.h"
+#include "stdafx.h"
 
 using std::string;
 
