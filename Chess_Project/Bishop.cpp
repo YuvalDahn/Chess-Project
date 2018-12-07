@@ -1,3 +1,7 @@
+/*
+Authors:    Harel Katz,			Yuval Dahan
+Emails:		harelka2@gmail.com,	yuvaldahn@gmail.com
+*/
 #include "Bishop.h"
 
 Bishop::Bishop(Side color): Piece(color) {}

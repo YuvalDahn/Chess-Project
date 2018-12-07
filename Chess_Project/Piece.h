@@ -1,9 +1,8 @@
-#pragma once
 /*
 Authors:    Harel Katz,			Yuval Dahan
 Emails:		harelka2@gmail.com,	yuvaldahn@gmail.com
 */
-
+#pragma once
 #include <cmath>
 #include "Location.h"
 

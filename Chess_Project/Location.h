@@ -1,3 +1,7 @@
+/*
+Authors:    Harel Katz,			Yuval Dahan
+Emails:		harelka2@gmail.com,	yuvaldahn@gmail.com
+*/
 #pragma once
 #include <iostream>
 #include "Piece.h"
@@ -8,6 +12,7 @@ using std::string;
 class Location
 {
 private:
+
 	int _col;
 	int _row;
 	
@@ -15,7 +20,9 @@ private:
 	static const char MAX_ROW = '8';
 	static const char MIN_COL = 'a';
 	static const char MAX_COL = 'h';
+
 public:
+
 	Location(char col, char row);
 	Location(int col, int row);
 	~Location();
@@ -26,4 +33,5 @@ public:
 	void set_col(int col);
 	void set_col(char col);
 	//TODO: operator=
+
 };

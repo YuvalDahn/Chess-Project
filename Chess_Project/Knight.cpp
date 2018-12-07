@@ -1,3 +1,7 @@
+/*
+Authors:    Harel Katz,			Yuval Dahan
+Emails:		harelka2@gmail.com,	yuvaldahn@gmail.com
+*/
 #include "Knight.h"
 
 Knight::Knight(Side color): Piece(color) {}
