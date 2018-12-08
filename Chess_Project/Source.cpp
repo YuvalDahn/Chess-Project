@@ -63,10 +63,14 @@ int main()
 				if(board[Location(i, j)] != nullptr)
 				{
 					cout << board[Location(i, j)]->get_type();
+					if((board[Location(i, j)]->get_color() == WHITE))
+						cout << "W ";
+					else
+						cout << "B ";
 				}
 				else
 				{
-					cout << '#';
+					cout << "## ";
 				}
 			}
 			cout << std::endl;

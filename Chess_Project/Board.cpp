@@ -7,11 +7,11 @@ Emails:		harelka2@gmail.com, yuvaldahn@gmail.com
 Board::Board(const string init_board)
 {
 	int pos = 0;
-	for (int i = 0; i < 8; ++i)
+	for(char i = Location::MAX_COL; i >= Location::MIN_COL; --i)
 	{
-		for (int j = 0; j < 8; ++j, ++pos)
+		for(char j = Location::MAX_ROW; j >= Location::MIN_ROW; --j, ++pos)
 		{
-			this->_board_arr[i][j] = get_piece(init_board[pos]);
+			(*this)[Location(i, j)] = get_piece(init_board[pos]);
 		}
 	}
 	this->_turn = (init_board[pos]) ? BLACK : WHITE;
