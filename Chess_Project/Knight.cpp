@@ -16,3 +16,8 @@ bool Knight::is_valid_move(Location src, Location dst, Piece * board_arr[][8])
 	return abs(horizontal_diff) == 2 && abs(verctical_diff) == 1 ||		//check if src and dst are a legal Knight move
 		   abs(horizontal_diff) == 1 && abs(verctical_diff) == 2;
 }
+
+char Knight::get_type()
+{
+	return 'n';
+}

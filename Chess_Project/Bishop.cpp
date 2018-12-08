@@ -12,3 +12,8 @@ bool Bishop::is_valid_move(Location src, Location dst, Piece * board_arr[][8])
 {
 	return Piece::moveDiagonal(src, dst, board_arr);
 }
+
+char Bishop::get_type()
+{
+	return 'b';
+}

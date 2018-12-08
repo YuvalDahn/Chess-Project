@@ -12,3 +12,8 @@ bool Queen::is_valid_move(Location src, Location dst, Piece * board_arr[][8])
 {
 	return Piece::moveStraight(src, dst, board_arr) || Piece::moveDiagonal(src, dst, board_arr);
 }
+
+char Queen::get_type()
+{
+	return 'q';
+}

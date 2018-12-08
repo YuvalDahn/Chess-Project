@@ -12,5 +12,6 @@ public:
 	Bishop(Side color);
 	~Bishop();
 	virtual bool is_valid_move(Location src, Location dst, Piece* board_arr[][8]);
+	virtual char get_type();
 };
 

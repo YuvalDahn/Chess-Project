@@ -13,7 +13,6 @@ public:
 	Pawn(Side color);
 	~Pawn();
 	virtual bool is_valid_move(Location src, Location dst, Piece* board_arr[][8]);
-	char get_type();
-
+	virtual char get_type();
 };
 

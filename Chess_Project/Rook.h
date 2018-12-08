@@ -12,5 +12,6 @@ public:
 	Rook(Side color);
 	~Rook();
 	virtual bool is_valid_move(Location src, Location dst, Piece* board_arr[][8]);
+	virtual char get_type();
 };
 

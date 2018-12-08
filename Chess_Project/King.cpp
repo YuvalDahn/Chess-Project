@@ -11,6 +11,7 @@ bool King::is_valid_move(Location src, Location dst, Piece * board_arr[][8])
 	return abs(verctical_diff) <= 1 && abs(horizontal_diff) <= 1;	//check if src and dst are a legal Knight move
 }
 
+
 char King::get_type()
 {
 	return 'k';

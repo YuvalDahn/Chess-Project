@@ -4,10 +4,10 @@ Emails:		harelka2@gmail.com, yuvaldahn@gmail.com
 */
 #include "Board.h"
 
-Board::Board(string init_board)
+Board::Board(const string init_board)
 {
 	int pos = 0;
-	for (int i = 0; i < 8; ++i, ++pos)
+	for (int i = 0; i < 8; ++i)
 	{
 		for (int j = 0; j < 8; ++j, ++pos)
 		{
@@ -19,13 +19,17 @@ Board::Board(string init_board)
 
 MoveResult Board::move(Location src, Location dst)
 {
-	Piece* p_src = this->_board_arr[src.get_row()][src.get_col()];
-	Piece* p_dst = this->_board_arr[dst.get_row()][dst.get_col()];
-	Side src_side = p_src->get_color();
-	Side dst_side = p_dst->get_color();
+	Piece* p_src = (*this)[src];
+	Piece* p_dst = (*this)[dst];
 	if (p_src == nullptr)
 	{
 		return NO_PLAYER_TOOL_IN_SRC;
+	}
+	Side src_side = p_src->get_color();
+	Side dst_side = (src_side == WHITE)? BLACK: WHITE;
+	if(p_dst != nullptr)
+	{
+		dst_side = p_dst->get_color();
 	}
 	else if (dst_side == src_side)
 	{
@@ -130,7 +134,7 @@ Location Board::get_king(Side side)
 	{
 		for (int j = 0; j < 8; ++j)
 		{
-			if (side == this->_board_arr[i][j]->get_color() && this->_board_arr[i][j]->get_type() == 'k')
+			if (this->_board_arr[i][j] != nullptr && side == this->_board_arr[i][j]->get_color() && this->_board_arr[i][j]->get_type() == 'k')
 			{
 				return Location(i, j);
 			}

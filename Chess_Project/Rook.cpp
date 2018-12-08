@@ -12,3 +12,8 @@ bool Rook::is_valid_move(Location src, Location dst, Piece* board_arr[][8])
 {
 	return Piece::moveStraight(src, dst, board_arr);
 }
+
+char Rook::get_type()
+{
+	return 'r';
+}
