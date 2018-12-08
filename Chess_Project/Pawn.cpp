@@ -1,12 +1,23 @@
+/*
+Authors:    Harel Katz,			Yuval Dahan
+Emails:		harelka2@gmail.com,	yuvaldahn@gmail.com
+*/
 #include "Pawn.h"
 
+//ctoe
 Pawn::Pawn(Side color): Piece(color)
 {
 	this->has_moved = false;
 }
 
+//dtor
 Pawn::~Pawn() {}
 
+/*
+this function is checking if the move of the rook is valid
+Input:  its src, dst, and the board
+Output: if the move is valid
+*/
 bool Pawn::is_valid_move(Location src, Location dst, Piece * board_arr[][8])
 {
 	int verctical_diff = dst.get_row() - src.get_row();		 //row desired move
@@ -40,10 +51,8 @@ bool Pawn::is_valid_move(Location src, Location dst, Piece * board_arr[][8])
 	return abs(horizontal_diff) == 1 && verctical_diff == -1;
 }
 	
-
+//getter
 char Pawn::get_type()
 {
 	return 'p';
 }
-
-

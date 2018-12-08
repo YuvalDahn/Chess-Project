@@ -4,18 +4,26 @@ Emails:		harelka2@gmail.com,	yuvaldahn@gmail.com
 */
 #include "Piece.h"
 
+//ctor
 Piece::Piece(Side color)
 {
 	this->_color = color;
 }
 
+//dtor
 Piece::~Piece() {}
 
+//getter
 Side Piece::get_color()
 {
 	return this->_color;
 }
 
+/*
+this function is moving the piece straight and checks if there is something in her way
+Input:  the src, dst of the piece anf the board
+Output: if it can be moved straight
+*/
 bool Piece::moveStraight(Location src, Location dst, Piece* board_arr[][8])
 {
 	if(src.get_col() == dst.get_col() || src.get_row() == dst.get_row())	//check if src and dst are in straight line
@@ -36,6 +44,11 @@ bool Piece::moveStraight(Location src, Location dst, Piece* board_arr[][8])
 	return false;
 }
 
+/*
+this function is moving the piece diagonaly and checks if there is something in her way
+Input:  the src, dst of the piece anf the board
+Output: if it can be moved straight
+*/
 bool Piece::moveDiagonal(Location src, Location dst, Piece* board_arr[][8])
 {
 	int verctical_diff = dst.get_row() - src.get_row();					//row desired move

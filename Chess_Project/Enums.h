@@ -1,3 +1,7 @@
+/*
+Authors:	Harel Katz,			Yuval Dahan
+Emails:		harelka2@gmail.com, yuvaldahn@gmail.com
+*/
 #pragma once
 
 enum MoveResult

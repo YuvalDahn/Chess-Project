@@ -4,6 +4,7 @@ Emails:		harelka2@gmail.com, yuvaldahn@gmail.com
 */
 #include "Board.h"
 
+//ctor
 Board::Board(const string init_board)
 {
 	int pos = 0;
@@ -17,6 +18,11 @@ Board::Board(const string init_board)
 	this->_turn = (init_board[pos]) ? BLACK : WHITE;
 }
 
+/*
+this function is checking all the senarios of a move
+Input:  the src and the dst of the piece
+Output: the result of the movement
+*/
 MoveResult Board::move(Location src, Location dst)
 {
 	Piece* p_src = (*this)[src];
@@ -63,6 +69,11 @@ MoveResult Board::move(Location src, Location dst)
 	return GOOD_MOVE;
 }
 
+/*
+this function is checking if a check was made
+Input:  the dst and the src of the move ,and which side if the piece in
+Output: if there is a check or not
+*/
 bool Board::is_check(Location src, Location dst, Side side)
 {
 	Location king = this->get_king(side);
@@ -84,6 +95,11 @@ bool Board::is_check(Location src, Location dst, Side side)
 	return false;
 }
 
+/*
+this function is creating a piece for the board
+Input:  which piece is it 
+Output: the location of the piece in the memory
+*/
 Piece * Board::get_piece(char p)
 {
 	Side side = WHITE;
@@ -118,6 +134,7 @@ Piece * Board::get_piece(char p)
 	return nullptr;
 }
 
+//operators
 Piece *& Board::operator[](Location loc)
 {
 	return this->_board_arr[loc.get_row()][loc.get_col()];
@@ -128,6 +145,11 @@ const Piece *& Board::operator[](Location loc) const
 	return (const Piece *&) this->_board_arr[loc.get_row()][loc.get_col()];
 }
 
+/*
+this function is getting the location of the black king or the white king
+Input:  which color of a king we are searching for
+Output: his location
+*/
 Location Board::get_king(Side side)
 {
 	for (int i = 0; i < 8; ++i)
