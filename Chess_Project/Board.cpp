@@ -8,11 +8,12 @@ Emails:		harelka2@gmail.com, yuvaldahn@gmail.com
 Board::Board(const string init_board)
 {
 	int pos = 0;
-	for(char i = Location::MAX_COL; i >= Location::MIN_COL; --i)
+	for(char i = Location::MAX_ROW; i >= Location::MIN_ROW; --i)		//reversed for because it starts in top row
 	{
-		for(char j = Location::MAX_ROW; j >= Location::MIN_ROW; --j, ++pos)
+		for(char j = Location::MIN_COL; j <= Location::MAX_COL; ++j, ++pos)
 		{
-			(*this)[Location(i, j)] = get_piece(init_board[pos]);
+			(*this)[Location(j, i)] = get_piece(init_board[pos]);
+			std::cout << "created Piece " << init_board[pos] << " in " << j << i << std::endl;
 		}
 	}
 	this->_turn = (init_board[pos]) ? BLACK : WHITE;
@@ -32,12 +33,12 @@ MoveResult Board::move(Location src, Location dst)
 		return NO_PLAYER_TOOL_IN_SRC;
 	}
 	Side src_side = p_src->get_color();
-	Side dst_side = (src_side == WHITE)? BLACK: WHITE;
-	if(p_dst != nullptr)
+	if(src_side != this->_turn)
 	{
-		dst_side = p_dst->get_color();
+		return NO_PLAYER_TOOL_IN_SRC;
 	}
-	else if (dst_side == src_side)
+
+	if(p_dst != nullptr && p_dst->get_color() == src_side)
 	{
 		return PLAYER_TOOL_IN_DST;
 	}
@@ -61,7 +62,10 @@ MoveResult Board::move(Location src, Location dst)
 		(*this)[dst] = temp;
 		return SELF_CHESS_MOVE;
 	}
-	else if (is_check(src, dst, dst_side))
+
+	delete temp;
+	this->_turn = (Side)!this->_turn;
+	if (is_check(src, dst, (Side)!src_side))
 	{
 		return CHESS_MOVE;
 	}
@@ -77,18 +81,17 @@ Output: if there is a check or not
 bool Board::is_check(Location src, Location dst, Side side)
 {
 	Location king = this->get_king(side);
-	for (int i = 0; i < 8; ++i)
+	for (char i = Location::MIN_ROW; i <= Location::MAX_ROW; ++i)
 	{
-		for (int j = 0; j < 8; ++j)
+		for (char j = Location::MIN_COL; j <= Location::MAX_COL; ++j)
 		{
-			if (side != this->_board_arr[i][j]->get_color())
+			Location loc(j, i);
+			if ((*this)[loc] != nullptr && side != (*this)[loc]->get_color())
 			{
-				try
+				if((*this)[loc]->is_valid_move(loc, king, this->_board_arr))
 				{
-					this->_board_arr[i][j]->is_valid_move(Location(i, j), king, this->_board_arr);
 					return true;
 				}
-				catch (...) {}
 			}
 		}
 	}
@@ -158,9 +161,10 @@ Location Board::get_king(Side side)
 		{
 			if (this->_board_arr[i][j] != nullptr && side == this->_board_arr[i][j]->get_color() && this->_board_arr[i][j]->get_type() == 'k')
 			{
-				return Location(i, j);
+				return Location(j + Location::MIN_COL, i + Location::MIN_ROW);
 			}
 		}
 	}
+	return Location('a','1');
 }
 
