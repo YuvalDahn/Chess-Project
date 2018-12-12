@@ -26,8 +26,6 @@ Output: if it can be moved straight
 */
 bool Piece::moveStraight(Location src, Location dst, Piece* board_arr[][8])
 {
-	if(src.get_col() == dst.get_col() || src.get_row() == dst.get_row())	//check if src and dst are in straight line
-	{
 		int i = src.get_row(), j = src.get_col();
 		if(src.get_col() == dst.get_col())
 		{
@@ -36,7 +34,7 @@ bool Piece::moveStraight(Location src, Location dst, Piece* board_arr[][8])
 			{
 				move_by = -1;
 			}
-			for(j = src.get_row() + move_by; j != dst.get_row(); j += move_by)
+			for(i = src.get_row() + move_by; i != dst.get_row(); i += move_by)
 			{
 				if(board_arr[i][j] != nullptr)						//if there is something on the way, it is not a valid move
 				{
@@ -45,14 +43,14 @@ bool Piece::moveStraight(Location src, Location dst, Piece* board_arr[][8])
 			}
 			return true;
 		}
-		if(src.get_row() == dst.get_row())
+		else if(src.get_row() == dst.get_row())
 		{
 			int move_by = 1;
 			if(src.get_col() < dst.get_col())
 			{
 				move_by = -1;
 			}
-			for(i = src.get_col() + move_by; i != dst.get_col(); i += move_by)
+			for(j = src.get_col() + move_by; j != dst.get_col(); j += move_by)
 			{
 				if(board_arr[i][j] != nullptr)								//if there is something on the way, it is not a valid move
 				{
@@ -61,7 +59,6 @@ bool Piece::moveStraight(Location src, Location dst, Piece* board_arr[][8])
 			}
 			return true;
 		}
-	}
 	return false;
 }
 
