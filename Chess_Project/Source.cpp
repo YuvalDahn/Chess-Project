@@ -41,7 +41,7 @@ int main()
 	
 
 	char msgToGraphics[1024];
-	const string START_MASSAGE = "rnbkqbnrpppppppp################################PPPPPPPPRNBKQBNR1";
+	const string START_MASSAGE = "rnbkqbnrpppppppp################################PPPPPPPPRNBKQBNR0";
 	// msgToGraphics should contain the board string accord the protocol
 	// YOUR CODE
 
