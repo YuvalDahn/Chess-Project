@@ -17,12 +17,12 @@ Location::~Location() {}
 //getters
 int Location::get_row()
 {
-	return this->_col;
+	return this->_row;
 }
 
 int Location::get_col()
 {
-	return this->_row;
+	return this->_col;
 }
 
 //setters

@@ -29,3 +29,4 @@ public:
 	void set_col(char col);
 
 };
+	
