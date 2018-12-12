@@ -34,7 +34,12 @@ bool Pawn::is_valid_move(Location src, Location dst, Piece * board_arr[][8])
 			}
 			return verctical_diff == 1 && horizontal_diff == 0;
 		}
-		return abs(horizontal_diff) == 1 && verctical_diff == 1;
+		if (abs(horizontal_diff) == 1 && verctical_diff == 1)
+		{
+			this->has_moved = true;
+			return true;
+		}
+		return false;
 	}
 
 
@@ -48,7 +53,12 @@ bool Pawn::is_valid_move(Location src, Location dst, Piece * board_arr[][8])
 		}
 		return verctical_diff == -1 && horizontal_diff == 0;
 	}
-	return abs(horizontal_diff) == 1 && verctical_diff == -1;
+	if (abs(horizontal_diff) == 1 && verctical_diff == -1)
+	{
+		this->has_moved = true;
+		return true;
+	}
+	return false;
 }
 	
 //getter
