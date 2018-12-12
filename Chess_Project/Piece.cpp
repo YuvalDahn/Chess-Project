@@ -28,21 +28,43 @@ bool Piece::moveStraight(Location src, Location dst, Piece* board_arr[][8])
 {
 	if(src.get_col() == dst.get_col() || src.get_row() == dst.get_row())	//check if src and dst are in straight line
 	{
-		int i = 0, j = 0;
-		for(i = src.get_row(); i < dst.get_row(); i++)				//check if there's something in the way
+		int i = src.get_row(), j = src.get_col();
+		if(src.get_col() == dst.get_col())
 		{
-			for(j = src.get_col(); j < dst.get_col(); j++)
+			int move_by = 1;
+			if(src.get_row() > dst.get_row())
+			{
+				move_by = -1;
+			}
+			for(j = src.get_row() + move_by; j != dst.get_row(); j += move_by)
+			{
+				if(board_arr[i][j] != nullptr)						//if there is something on the way, it is not a valid move
+				{
+					return false;
+				}
+			}
+			return true;
+		}
+		if(src.get_row() == dst.get_row())
+		{
+			int move_by = 1;
+			if(src.get_col() < dst.get_col())
+			{
+				move_by = -1;
+			}
+			for(i = src.get_col() + move_by; i != dst.get_col(); i += move_by)
 			{
 				if(board_arr[i][j] != nullptr)								//if there is something on the way, it is not a valid move
 				{
 					return false;
 				}
 			}
+			return true;
 		}
-		return true;
 	}
 	return false;
 }
+
 
 /*
 this function is moving the piece diagonaly and checks if there is something in her way
