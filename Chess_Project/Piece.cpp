@@ -70,18 +70,16 @@ Output: if it can be moved straight
 */
 bool Piece::moveDiagonal(Location src, Location dst, Piece* board_arr[][8])
 {
-	int verctical_diff = dst.get_row() - src.get_row();					//row desired move
+	int vertical_diff = dst.get_row() - src.get_row();					//row desired move
 	int horizontal_diff = dst.get_col() - src.get_col();				//col desired move
-	if(abs(horizontal_diff) == abs(verctical_diff))						//check if src and dst are in diagonal line
+	if(abs(horizontal_diff) == abs(vertical_diff))						//check if src and dst are in diagonal line
 	{
-		int vertical_diff = dst.get_row() - src.get_row();		//row desired move
-		int horizontal_diff = dst.get_col() - src.get_col();	//col desired move
 		int vert_direction = 0, horiz_direction = 0;
 		if(vertical_diff > 0)
 		{
 			vert_direction = 1;
 		}
-		else if(vertical_diff < 0)
+		else
 		{
 			vert_direction = -1;
 		}
@@ -89,18 +87,15 @@ bool Piece::moveDiagonal(Location src, Location dst, Piece* board_arr[][8])
 		{
 			horiz_direction = 1;
 		}
-		else if(horizontal_diff < 0)
+		else
 		{
 			horiz_direction = -1;
 		}
-		for(int i = src.get_row(); i != dst.get_row(); i += vert_direction)
+		for(int i = src.get_row() + vert_direction, j = src.get_col() + horiz_direction; i != dst.get_row() && j != dst.get_col(); i += vert_direction, j += horiz_direction)
 		{
-			for(int j = src.get_col(); j != dst.get_col(); j += horiz_direction)
+			if(board_arr[i][j] != nullptr)
 			{
-				if(board_arr[i][j] != nullptr)
-				{
-					return false;
-				}
+				return false;
 			}
 		}
 		return true;
