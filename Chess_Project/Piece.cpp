@@ -46,7 +46,7 @@ bool Piece::moveStraight(Location src, Location dst, Piece* board_arr[][8])
 		else if(src.get_row() == dst.get_row())
 		{
 			int move_by = 1;
-			if(src.get_col() < dst.get_col())
+			if(src.get_col() > dst.get_col())
 			{
 				move_by = -1;
 			}
