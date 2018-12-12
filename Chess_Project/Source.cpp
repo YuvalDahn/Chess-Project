@@ -56,14 +56,14 @@ int main()
 	{
 		// should handle the string the sent from graphics
 		// according the protocol. Ex: e2e4           (move e2 to e4)
-		for(char i = Location::MIN_COL; i < Location::MIN_COL + 8; i++)
+		for(char i = Location::MIN_ROW; i <= Location::MAX_ROW; i++)
 		{
-			for(char j = Location::MIN_ROW; j < Location::MIN_ROW + 8; j++)
+			for(char j = Location::MIN_COL; j <= Location::MAX_COL; j++)
 			{
-				if(board[Location(i, j)] != nullptr)
+				if(board[Location(j, i)] != nullptr)
 				{
-					cout << board[Location(i, j)]->get_type();
-					if((board[Location(i, j)]->get_color() == WHITE))
+					cout << board[Location(j, i)]->get_type();
+					if((board[Location(j, i)]->get_color() == WHITE))
 						cout << "W ";
 					else
 						cout << "B ";
@@ -75,6 +75,8 @@ int main()
 			}
 			cout << std::endl;
 		}
+		//WIP: print recived index and index on board
+		//cout << msgFromGraphics[0] << msgFromGraphics[1] << Location(msgFromGraphics[0], msgFromGraphics[1]).get_row() << Location(msgFromGraphics[0], msgFromGraphics[1]).get_col() << std::endl;
 		MoveResult result = board.move(Location(msgFromGraphics[0], msgFromGraphics[1]), Location(msgFromGraphics[2], msgFromGraphics[3]));
 		
 
