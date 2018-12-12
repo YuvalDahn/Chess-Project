@@ -55,17 +55,34 @@ bool Piece::moveDiagonal(Location src, Location dst, Piece* board_arr[][8])
 	int horizontal_diff = dst.get_col() - src.get_col();				//col desired move
 	if(abs(horizontal_diff) == abs(verctical_diff))						//check if src and dst are in diagonal line
 	{
-		(horizontal_diff > 0) ? horizontal_diff-- : horizontal_diff++;	//increases/decreases according to positivity
-		(verctical_diff > 0) ? verctical_diff-- : verctical_diff++;
-		while(horizontal_diff != 0 && verctical_diff != 0)				//goes over all the cells in the way between src and dst
+		int vertical_diff = dst.get_row() - src.get_row();		//row desired move
+		int horizontal_diff = dst.get_col() - src.get_col();	//col desired move
+		int vert_direction = 0, horiz_direction = 0;
+		if(vertical_diff > 0)
 		{
-			//if there is something on the way, it is not a valid move
-			if(board_arr[dst.get_row() + horizontal_diff][dst.get_col() + verctical_diff] != nullptr)
+			vert_direction = 1;
+		}
+		else if(vertical_diff < 0)
+		{
+			vert_direction = -1;
+		}
+		if(horizontal_diff > 0)
+		{
+			horiz_direction = 1;
+		}
+		else if(horizontal_diff < 0)
+		{
+			horiz_direction = -1;
+		}
+		for(int i = src.get_row(); i != dst.get_row(); i += vert_direction)
+		{
+			for(int j = src.get_col(); j != dst.get_col(); j += horiz_direction)
 			{
-				return false;
+				if(board_arr[i][j] != nullptr)
+				{
+					return false;
+				}
 			}
-			(horizontal_diff > 0) ? horizontal_diff-- : horizontal_diff++;	//increases/decreases according to positivity
-			(verctical_diff > 0) ? verctical_diff-- : verctical_diff++;
 		}
 		return true;
 	}
