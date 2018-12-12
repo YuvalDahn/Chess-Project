@@ -74,20 +74,12 @@ bool Piece::moveDiagonal(Location src, Location dst, Piece* board_arr[][8])
 	int horizontal_diff = dst.get_col() - src.get_col();				//col desired move
 	if(abs(horizontal_diff) == abs(vertical_diff))						//check if src and dst are in diagonal line
 	{
-		int vert_direction = 0, horiz_direction = 0;
-		if(vertical_diff > 0)
-		{
-			vert_direction = 1;
-		}
-		else
+		int vert_direction = 1, horiz_direction = 1;
+		if(vertical_diff < 0)
 		{
 			vert_direction = -1;
 		}
-		if(horizontal_diff > 0)
-		{
-			horiz_direction = 1;
-		}
-		else
+		if(horizontal_diff < 0)
 		{
 			horiz_direction = -1;
 		}
