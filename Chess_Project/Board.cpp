@@ -16,7 +16,7 @@ Board::Board(const string init_board)
 			std::cout << "created Piece " << init_board[pos] << " in " << j << i << std::endl;
 		}
 	}
-	this->_turn = (init_board[pos]) ? BLACK : WHITE;
+	this->_turn = (init_board[pos] == '1') ? BLACK : WHITE;
 }
 
 /*
