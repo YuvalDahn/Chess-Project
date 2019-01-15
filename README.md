@@ -5,4 +5,4 @@
 ## What is it:
 This is the implementation of the **backend**.
 
-The frontend graphisc can be found in _chessGraphics.exe_.
+The frontend graphics can be found in _chessGraphics.exe_.
